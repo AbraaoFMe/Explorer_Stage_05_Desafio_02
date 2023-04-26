@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Colors */
+    --tt-primary: white;
+    --bc-primary: hsla(194, 100%, 63%, 1);
+    --bg-primary: hsla(240, 5%, 7%, 1);
+    --bg-secondary: hsla(194, 100%, 63%, 0.13);
+    --bg-modal: white;
+
+    /* Font */
+    --ff-primary: 'Roboto', sans-serif;
+
+    font-size: 62.5%;
+}
+
+.hide {
+    display: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 999px;
+
+    transition: transform .3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+body {
+    height: 100vh;
+    background: var(--bg-primary);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--ff-primary);
+    font-size: 1.6rem;
+}
+
+.app-wrapper {
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 8.8rem;
+    font-weight: bold;
+    color: var(--tt-primary);
+
+    line-height: 10.3rem;
+    margin-bottom: 1.6rem;
+}
+
+.controls {
+    background: var(--bg-secondary);
+    padding: 2.2rem 4rem;
+    border-radius: 999px;
+    display: flex;
+    gap: 3.2rem
+}
+
+.sound-controls {
+    position: absolute;
+    right: 4.0rem;
+    bottom: 3.2rem;
+}
