@@ -34,18 +34,39 @@ export default function ({
     })
 
     buttons.timer.plus.addEventListener('click', () => {
+        sounds.press()
         timer.plus()
     })
 
     buttons.timer.less.addEventListener('click', () => {
+        sounds.press()
         timer.less()
     })
 
 
     // Songs
-    for(const songOption in buttons.songs) {
-        buttons.songs[songOption].addEventListener('click', () => {
+    for (const songOption in buttons.songs) {
+        buttons.songs[songOption].button.addEventListener('click', () => {
+            sounds.press()
             controls.song.toggle(songOption)
         })
+
+        buttons.songs[songOption].volume.addEventListener('click', e => {
+            e.stopPropagation()
+            sounds.bgSongs[songOption].volume = e.currentTarget.value / 100
+        })
     }
+
+    // Dark-Mode-Switch
+    buttons.switch.dark.addEventListener('click', () => {
+        sounds.press()
+        controls.switch.light()
+        controls.app.light()
+    })
+
+    buttons.switch.light.addEventListener('click', () => {
+        sounds.press()
+        controls.switch.dark()
+        controls.app.dark()
+    })
 }

@@ -1,4 +1,6 @@
-export default function () {
+export default function ({
+    songControls
+}) {
     const buttonPressAudio = new Audio('../assets/songs/audios_button-press.wav')
     const kitchenTimer = new Audio('../assets/songs/audios_kichen-timer.mp3')
 
@@ -7,6 +9,10 @@ export default function () {
         rain: new Audio('../assets/songs/Chuva.wav'),
         shop: new Audio('../assets/songs/Cafeteria.wav'),
         fire: new Audio('../assets/songs/Lareira.wav')
+    }
+
+    for(const song in bgSongs) {
+        bgSongs[song].volume = songControls[song].volume.value / 100
     }
 
     for(const song in bgSongs) {

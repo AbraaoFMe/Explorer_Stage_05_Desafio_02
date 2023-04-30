@@ -1,4 +1,11 @@
 export default function () {
+    const root = document.documentElement
+
+    const app = {
+        dark: setDarkModeOn,
+        light: setDarkModeOff
+    }
+
     const controls = {
         timer: {
             play: document.querySelector('.play'),
@@ -10,10 +17,27 @@ export default function () {
         },
 
         songs: {
-            forest: document.querySelector('.forest'),
-            rain: document.querySelector('.rain'),
-            shop: document.querySelector('.shop'),
-            fire: document.querySelector('.fire')
+            forest: {
+                button: document.querySelector('.forest'),
+                volume: document.querySelector('.forest .volume')
+            },
+            rain: {
+                button: document.querySelector('.rain'),
+                volume: document.querySelector('.rain .volume')
+            },
+            shop: {
+                button: document.querySelector('.shop'),
+                volume: document.querySelector('.shop .volume')
+            },
+            fire: {
+                button: document.querySelector('.fire'),
+                volume: document.querySelector('.fire .volume')
+            }
+        },
+
+        switch: {
+            dark: document.querySelector('.dark'),
+            light: document.querySelector('.light')
         }
     }
 
@@ -34,11 +58,20 @@ export default function () {
         element.classList.toggle('selected')
     }
 
+    function setDarkModeOn() {
+        root.classList.add('dark-mode')
+    }
+
+    function setDarkModeOff() {
+        root.classList.remove('dark-mode')
+    }
+
     return {
         controls,
+        app,
         timeDisplay,
         show,
         hide,
-        toggleSelected
+        toggleSelected,
     }
 }

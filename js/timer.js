@@ -1,6 +1,9 @@
 import Sounds from "./sounds.js"
 
-export default function (timeDisplay) {
+export default function ({
+    timeDisplay,
+    resetButton
+}) {
     let minutes = localStorage.getItem("timer-minutes") || 25
 
     const countTime = {
@@ -37,7 +40,7 @@ export default function (timeDisplay) {
                 }
 
                 --countTime.minutes
-                countTime.seconds = 5
+                countTime.seconds = 60
             }
 
             --countTime.seconds
@@ -51,6 +54,7 @@ export default function (timeDisplay) {
     function reset() {
         countTime.minutes = minutes
         countTime.seconds = 0
+        resetButton()
         updateDisplay()
     }
 
