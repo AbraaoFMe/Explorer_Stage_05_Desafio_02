@@ -4,8 +4,8 @@ export default function (timeDisplay) {
     let minutes = localStorage.getItem("timer-minutes") || 25
 
     const countTime = {
-        minutes,
-        seconds: 0
+        minutes: Number(minutes),
+        seconds: Number(0)
     }
 
     updateDisplay()
@@ -31,6 +31,8 @@ export default function (timeDisplay) {
             if (countTime.seconds <= 0) {
                 if (countTime.minutes <= 0) {
                     Sounds().timerEnd()
+                    reset()
+                    updateDisplay()
                     return
                 }
 
@@ -61,10 +63,23 @@ export default function (timeDisplay) {
         clearTimeout(timerTimeOut)
     }
 
+    function plus() {
+        countTime.minutes += 5
+        updateDisplay()
+    }
+
+    function less() {
+        countTime.minutes = countTime.minutes >= 5 ? countTime.minutes - 5 : 0
+
+        updateDisplay()
+    }
+
     return {
         setTimer,
         countDown,
         stop,
-        pause
+        pause,
+        plus,
+        less
     }
 }

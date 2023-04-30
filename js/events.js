@@ -4,47 +4,48 @@ export default function ({
     timer,
     sounds
 }) {
-    buttons.play.addEventListener('click', () => {
+    // Timer
+    buttons.timer.play.addEventListener('click', () => {
         sounds.press()
-        controls.play()
+        controls.timer.play()
         timer.countDown()
     })
 
-    buttons.pause.addEventListener('click', () => {
+    buttons.timer.pause.addEventListener('click', () => {
         sounds.press()
-        controls.pause()
+        controls.timer.pause()
         timer.pause()
     })
 
-    buttons.stop.addEventListener('click', () => {
+    buttons.timer.stop.addEventListener('click', () => {
         sounds.press()
-        controls.stop()
+        controls.timer.stop()
         timer.stop()
     })
 
-    buttons.set.addEventListener('click', () => {
+    buttons.timer.set.addEventListener('click', () => {
         sounds.press()
 
-        let newMinutes = controls.getMinutes()
+        let newMinutes = controls.timer.getMinutes()
 
         if (newMinutes) {
             timer.setTimer(newMinutes)
         }
     })
 
-    buttons.sound_on.addEventListener('click', () => {
-        sounds.press()
-
-        controls.sound_on()
-
-        sounds.bgAudio.pause()
+    buttons.timer.plus.addEventListener('click', () => {
+        timer.plus()
     })
 
-    buttons.sound_off.addEventListener('click', () => {
-        sounds.press()
-
-        controls.sound_off()
-
-        sounds.bgAudio.play()
+    buttons.timer.less.addEventListener('click', () => {
+        timer.less()
     })
+
+
+    // Songs
+    for(const songOption in buttons.songs) {
+        buttons.songs[songOption].addEventListener('click', () => {
+            controls.song.toggle(songOption)
+        })
+    }
 }

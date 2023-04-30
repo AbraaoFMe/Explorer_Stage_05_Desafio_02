@@ -1,11 +1,20 @@
 export default function () {
     const controls = {
-        play: document.querySelector('.play'),
-        pause: document.querySelector('.pause'),
-        stop: document.querySelector('.stop'),
-        set: document.querySelector('.set'),
-        sound_on: document.querySelector('.sound-on'),
-        sound_off: document.querySelector('.sound-off')
+        timer: {
+            play: document.querySelector('.play'),
+            pause: document.querySelector('.pause'),
+            stop: document.querySelector('.stop'),
+            set: document.querySelector('.set'),
+            plus: document.querySelector('.plus'),
+            less: document.querySelector('.less')
+        },
+
+        songs: {
+            forest: document.querySelector('.forest'),
+            rain: document.querySelector('.rain'),
+            shop: document.querySelector('.shop'),
+            fire: document.querySelector('.fire')
+        }
     }
 
     const timeDisplay = {
@@ -21,10 +30,15 @@ export default function () {
         element.classList.add('hide')
     }
 
+    function toggleSelected(element) {
+        element.classList.toggle('selected')
+    }
+
     return {
         controls,
         timeDisplay,
         show,
-        hide
+        hide,
+        toggleSelected
     }
 }
